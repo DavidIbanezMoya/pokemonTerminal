@@ -24,11 +24,18 @@ def empezarCombate():
         for i in range (cantidad):
             newPoke = Pokemon()
             if opt == 1:
-                print("Que ID quieres? ")
-                f = open("pokedex.txt", "r+")
-                listapokemon = f.readlines()
-                id = opciones(1,(len(listapokemon) - 1))
-                newPoke.generarPokemon(id)
+                while True:
+                    print("Que ID quieres? (0 para ver la Pokedex) ")
+                    f = open("pokedex.txt", "r+")
+                    listapokemon = f.readlines()
+
+                    id = opciones(0,(len(listapokemon) - 1))
+                    if id == 0:
+                        for i in listapokemon:
+                            print(i)
+                    if id > 0:
+                        newPoke.generarPokemon(id)
+                        break
             elif opt == 2:
                 newPoke.generarPokemon(newPoke.idAleatorio())
 
@@ -43,18 +50,51 @@ def empezarCombate():
         for i in equipo:
             print(i)
 
-        print("\nQue quieres hacer?\n1.Combatir\n2.Observar Pokemon Rival\n3.Abandonar")
 
-        if opt == 1:
-            print("Aqui ya debe ser la funcion de pegarse")
-        elif opt == 2:
-            print("\n\n")
-            for i in equipoRival:
-                print(i)
-        elif opt == 3:
-            principal = True
+        while True:
+            print("\nQue quieres hacer?\n1.Combatir\n2.Observar Pokemon Rival\n3.Modificar movimientos\n4.Abandonar")
+            opt = opciones(1, 4)
+            if opt == 1:
+                combate(equipo,equipoRival)
+            elif opt == 2:
+                print("\n\n")
+                for i in equipoRival:
+                    print(i)
+            #todo End this
+            elif opt == 3:
+                print("De que Pokemon quieres ver los movimientos?")
+                for i in equipo:
+                    print(i+1,")",i.nombre)
+            elif opt == 4:
+                principal = True
     else:
         return
+
+def combate(equipo,equipoRival):
+    print("1.Movimientos\n2.Objetos\n3.Cambiar Pokemon\n4.Abandonar Combate")
+    #Se necesita saber cual es el Pokemon que se tiene seleccionado en todo momento
+    activePokemon = equipo[0]
+
+    while True:
+        opt = opciones(1, 4)
+        if opt != 4:
+            if opt == 1:
+                print(activePokemon)
+
+            elif opt == 2:
+                print(activePokemon)
+
+            elif opt == 3:
+                for i in range (len(equipo)):
+                    print(i+1,") ",equipo[i].nombre,"Vida:",equipo[i].vidaActual,"/",equipo[i].vida)
+                    #todo Change the active Pokemon, and warn when swapping to the same Poke
+                opt = opciones(1, equipo)
+                activePokemon = equipo[opt-1]
+
+
+        else:
+            principal = True
+            break
 
 def modificarReglas():
     print("Que quieres modificar?\n1.Uso de objetos\n2.Modificadores de dano\n3.Nada")
@@ -108,7 +148,7 @@ def anadirPokemon():
         f.write(tipo)
 
 def modPokemon():
-    #todo TENGO QUE TERMINAR ESTE MODULO CUANDO NO ME DE PEREZA xD
+    #todo TENGO QUE TERMINAR ESTE MODULO
     f = open("pokedex.txt","r+")
     pokemon = f.readlines()
     print(f"Que Pokemon quieres modificar? Total {len(pokemon)}")

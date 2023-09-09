@@ -60,7 +60,7 @@ class Pokemon():
         if monotype == True:
             self.tipos.append(linea.split("#")[2])
 
-        self.nivel = random.randint(10,99)
+        self.nivel = random.randint(75,88)
         self.vida = random.randint(50,100)
         self.vida += round(2.5*self.nivel)
         self.velocidad = random.randint(20,80)
@@ -71,13 +71,14 @@ class Pokemon():
         self.defensa += round(2.2*self.nivel)
         self.total = self.ataque+self.defensa+self.velocidad
 
+        self.vidaActual = self.vida
         #todo Que los tipos se impriman correctamente sin el \n
 
         #print("El Pokemon generado ha sido:\n"+self.nombre+"\nTipos = "+str(self.tipos)+"\nNivel: "+str(self.nivel)
         #      +"\nVida: "+str(self.vida)+"\nVelocidad: "+str(self.velocidad)+"\nAtaque: "+str(self.ataque)+"\nDefensa: "+str(self.defensa))
 
     def golpeado (self,dano):
-        self.vida = self.defensa - dano
+        self.vidaActual = self.defensa - dano
 
     def golpear (self):
         dano = self.ataque

@@ -151,5 +151,4 @@
 151#Mew#Psiquico
 152#Rovira#Lucha/Fantasma
 153#Perrololo#Hada/Electrico
-
 154#Mecalux#Roca/Veneno
