@@ -71,26 +71,35 @@ def empezarCombate():
         return
 
 def combate(equipo,equipoRival):
-    print("1.Movimientos\n2.Objetos\n3.Cambiar Pokemon\n4.Abandonar Combate")
     #Se necesita saber cual es el Pokemon que se tiene seleccionado en todo momento
     activePokemon = equipo[0]
 
     while True:
+        print("1.Movimientos\n2.Objetos\n3.Cambiar Pokemon\n4.Abandonar Combate")
+
         opt = opciones(1, 4)
         if opt != 4:
             if opt == 1:
                 print(activePokemon)
 
             elif opt == 2:
-                print(activePokemon)
+                print("Still need to implement objects in battle")
 
             elif opt == 3:
-                for i in range (len(equipo)):
-                    print(i+1,") ",equipo[i].nombre,"Vida:",equipo[i].vidaActual,"/",equipo[i].vida)
-                    #todo Change the active Pokemon, and warn when swapping to the same Poke
-                opt = opciones(1, equipo)
-                activePokemon = equipo[opt-1]
+                while True:
+                    for i in range (len(equipo)):
+                        print(i+1,") ",equipo[i].nombre,"Vida:",equipo[i].vidaActual,"/",equipo[i].vida)
+                        #todo Change the active Pokemon, and warn when swapping to the same Poke
+                    print(len(equipo)+1,")Atras ")
+                    opt = opciones(1, len(equipo)+1)
+                    if opt == len(equipo)+1:
+                        break
 
+                    if (equipo[opt-1].nombre == activePokemon.nombre):
+                        print("Este Pokemon ya esta en uso!")
+                    else:
+                        activePokemon = equipo[opt-1]
+                        break
 
         else:
             principal = True
@@ -121,6 +130,7 @@ def modificarReglas():
 
 # --------------------------POKEDEX--------------------------------------------------------------------------
 
+#todo Implementar una opcion para ver todos los Pokemon listados
 def anadirPokemon():
     f = open("pokedex.txt","r+")
     pokemon = f.readlines()

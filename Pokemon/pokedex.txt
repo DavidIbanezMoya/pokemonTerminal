@@ -135,7 +135,7 @@
 135#Jolteon#Electrico
 136#Flareon#Fuego
 137#Porygon#Normal
-138#Omanye#Roca/Agua
+138#Omanyte#Roca/Agua
 139#Omastar#Roca/Agua
 140#Kabuto#Roca/Agua
 141#Kabutops#Roca/Agua
