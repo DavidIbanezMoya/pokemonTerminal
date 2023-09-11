@@ -82,6 +82,7 @@ def combate(equipo,equipoRival):
             if opt == 1:
                 print(activePokemon)
 
+
             elif opt == 2:
                 print("Still need to implement objects in battle")
 

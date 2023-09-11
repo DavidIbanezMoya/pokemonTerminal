@@ -1,5 +1,8 @@
 import random
 
+from Pokemon import tipos as t
+
+
 class Pokemon():
 
     def __init__(self):
@@ -12,6 +15,7 @@ class Pokemon():
         self.ataque = 25
         self.defensa = 25
         self.total = self.ataque+self.defensa+self.velocidad
+        self.movimientos = []
     def __str__(self):
 
         tipos = self.mostrarTipos()
@@ -26,12 +30,13 @@ class Pokemon():
 
     def mostrarTipos (self):
         #Un Pokemon solo puede tener 2 tipos como maximo, no deberia petar
-        tipos = ""
+
+        #tipos = ""
 
         if len(self.tipos) == 1:
-            tipos = self.tipos[0]
+            tipos = t.tipo.nombre()
         else:
-            tipos = self.tipos[0]+"/"+self.tipos[1]
+            tipos = self.tipos[0].nombre +"/"+self.tipos[1].nombre
 
 
         return str(tipos).replace("\n","")
@@ -49,17 +54,46 @@ class Pokemon():
         linea = pokemon[id-1]
         self.nombre = linea.split("#")[1]
         monotype = True
+        cantidadTipos = 1
+        criterio = self
 
         try:
+            #Si tiene 2 tipos o mas habra que dividrlos luego
             linea.split("#")[2].split("/")
             monotype = False
-            self.tipos.append(linea.split("#")[2].split("/")[0])
-            self.tipos.append(linea.split("#")[2].split("/")[1])
+
+
+            #Verificar si hay mas de un tipo
+            linea.split("#")[2].split("/")[0]
+            linea.split("#")[2].split("/")[1]
+
+            if linea.split("#")[2].split("/")[0] in t.tiposExistentes:
+                cantidadTipos = 2
+            criterio = linea.split("#")[2].split("/")[0]
+
         except:
             print("",end="")
         if monotype == True:
-            self.tipos.append(linea.split("#")[2])
+            #Si no los tiene simplemente podremos anadir lo que haya despues
+            #self.tipos.append(linea.split("#")[2])
+            criterio = linea.split("#")[2]
 
+        print("Abans")
+        for i in range(cantidadTipos):
+            #Diccionario de tipos
+            for j in t.tiposExistentes:
+                #Dentro de cada tipo
+                for k in j:
+                #Se ira buscando cual es el tipo, en la tabla para crear un nuevo objeto tipo y ponerselo al Poke
+                    try:
+                        #todo No coincide con el if con lo cual no se asigna y por eso peta, pq intenta buscar pero esta vacio
+                        if k.isalpha() and criterio and "Fuego" in k:
+                            print("Afegit")
+                            self.tipos.append(t.tipoFuego.nombre)
+                    except:
+                        print("",end="")
+
+        # todo if elif para instanciar el tipo del pokemon
         self.nivel = random.randint(75,88)
         self.vida = random.randint(50,100)
         self.vida += round(2.5*self.nivel)
@@ -72,6 +106,11 @@ class Pokemon():
         self.total = self.ataque+self.defensa+self.velocidad
 
         self.vidaActual = self.vida
+
+        #---Movimientos----
+
+
+
         #todo Que los tipos se impriman correctamente sin el \n
 
         #print("El Pokemon generado ha sido:\n"+self.nombre+"\nTipos = "+str(self.tipos)+"\nNivel: "+str(self.nivel)

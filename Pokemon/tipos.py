@@ -1,9 +1,9 @@
-class Tipo():
+class tipo():
 
     def __init__(self):
-        tipos = [[1, "Fuego"], [2, "Agua"], [3, "Planta"], [4, "Hada"], [5, "Acero"], [6, "Siniestro"], [7, "Dragon"],
-                 [8, "Fantasma"], [9, "Roca"], [10, "Bicho"], [11, "Psiquico"], [12, "Volador"], [13, "Tierra"], [14, "Veneno"],
-                 [15, "Lucha"], [16, "Hielo"],[17, "Electrico"], [18, "Normal"]]
+        #tiposExistentes = [[1, "Fuego"], [2, "Agua"], [3, "Planta"], [4, "Hada"], [5, "Acero"], [6, "Siniestro"], [7, "Dragon"],
+        #         [8, "Fantasma"], [9, "Roca"], [10, "Bicho"], [11, "Psiquico"], [12, "Volador"], [13, "Tierra"], [14, "Veneno"],
+        #         [15, "Lucha"], [16, "Hielo"],[17, "Electrico"], [18, "Normal"]]
         self.nombre = ""
         self.idTipo = ""
         self.fuerteContra = []
@@ -11,6 +11,8 @@ class Tipo():
         self.noFuerteContra = []
         self.inmune = []
         self.movimientos = []
+    def nombre (self):
+        self.nombre()
 
     def fuerte (self):
         self.fuerte = True
@@ -30,7 +32,7 @@ class Tipo():
 #todo Reducir y aumentar el dano de los ataques que va a recibir
 #Movimientos -> Nombre,Potencia,Precision
 
-class tipoFuego(Tipo):
+class tipoFuego(tipo):
     nombre = "Fuego"
     idTipo = 1
     fuerteContra = ["Acero","Hielo","Planta","Bicho"]
@@ -39,7 +41,7 @@ class tipoFuego(Tipo):
     movimientos = [["Rueda Fuego",60,100],["Llamarada",95,85]]
 
 
-class tipoAgua(Tipo):
+class tipoAgua(tipo):
     nombre = "Agua"
     idTipo = 2
     fuerteContra = ["Roca","Tierra","Fuego"]
@@ -47,7 +49,7 @@ class tipoAgua(Tipo):
     debilContra = ["Planta","Electrico"]
     movimientos = [["Pistola Agua",60,100],["HidroBomba",95,85]]
 
-class tipoPlanta(Tipo):
+class tipoPlanta(tipo):
     nombre = "Planta"
     idTipo = 3
     fuerteContra = ["Agua","Roca","Tierra"]
@@ -55,7 +57,7 @@ class tipoPlanta(Tipo):
     debilContra = ["Volador","Hielo","Bicho","Fuego","Veneno"]
     movimientos = [["Hoja Afilada",60,100],["Energibola",95,85]]
 
-class tipoHada(Tipo):
+class tipoHada(tipo):
     nombre = "Hada"
     idTipo = 4
     fuerteContra = ["Lucha","Dragon","Siniestro"]
@@ -64,7 +66,7 @@ class tipoHada(Tipo):
     inmune = ["Dragon"]
     movimientos = [["Beso Dulce",60,100],["Fuerza Lunar",95,85]]
 
-class tipoAcero(Tipo):
+class tipoAcero(tipo):
     nombre = "Acero"
     idTipo = 5
     fuerteContra = ["Roca","Hielo","Hada"]
@@ -73,7 +75,7 @@ class tipoAcero(Tipo):
     inmune = ["Veneno"]
     movimientos = [["Puño Acero",60,100],["Cola Ferrea",95,85]]
 
-class tipoSiniestro(Tipo):
+class tipoSiniestro(tipo):
     nombre = "Siniestro"
     idTipo = 6
     fuerteContra = ["Psiquico","Fantasma"]
@@ -82,7 +84,7 @@ class tipoSiniestro(Tipo):
     inmune = ["Psiquico"]
     movimientos = [["Mordisco",60,100],["Triturar",95,85]]
 
-class tipoDragon(Tipo):
+class tipoDragon(tipo):
     nombre = "Dragon"
     idTipo = 7
     fuerteContra = ["Dragon"]
@@ -90,7 +92,7 @@ class tipoDragon(Tipo):
     debilContra = ["Hielo","Hada","Dragon"]
     movimientos = [["Cola Dragon",60,100],["Cola Dragon",95,85]]
 
-class tipoFantasma(Tipo):
+class tipoFantasma(tipo):
     nombre = "Fantasma"
     idTipo = 8
     fuerteContra = ["Psiquico","Fantasma"]
@@ -99,7 +101,7 @@ class tipoFantasma(Tipo):
     inmune = ["Normal","Lucha"]
     movimientos = [["Lenguetazo",60,100],["Golpe Vil",95,85]]
 
-class tipoRoca(Tipo):
+class tipoRoca(tipo):
     nombre = "Roca"
     idTipo = 9
     fuerteContra = ["Agua","Hielo","Bicho","Fuego"]
@@ -107,7 +109,7 @@ class tipoRoca(Tipo):
     debilContra = ["Acero","Agua","Planta","Tierra","Lucha"]
     movimientos = [["Roca Afilada",60,100],["Avalancha",95,85]]
 
-class tipoBicho(Tipo):
+class tipoBicho(tipo):
     nombre = "Bicho"
     idTipo = 10
     fuerteContra = ["Planta","Psiquico","Siniestro"]
@@ -115,7 +117,7 @@ class tipoBicho(Tipo):
     debilContra = ["Agua","Roca","Fuego"]
     movimientos = [["Chupa Vidas",60,100],["Zumbido",95,85]]
 
-class tipoPsiquico(Tipo):
+class tipoPsiquico(tipo):
     nombre = "Psiquico"
     idTipo = 11
     fuerteContra = ["Lucha","Veneno"]
@@ -123,7 +125,7 @@ class tipoPsiquico(Tipo):
     debilContra = ["Bicho","Dragon","Siniestro"]
     movimientos = [["Confusion",60,100],["Psiquico",95,85]]
 
-class tipoVolador(Tipo):
+class tipoVolador(tipo):
     nombre = "Volador"
     idTipo = 12
     fuerteContra = ["Planta","Bicho","Lucha"]
@@ -131,7 +133,7 @@ class tipoVolador(Tipo):
     debilContra = ["Hielo","Roca","Electrico"]
     movimientos = [["Golpe Aereo",60,100],["Vuelo",95,85]]
 
-class tipoTierra(Tipo):
+class tipoTierra(tipo):
     nombre = "Tierra"
     idTipo = 13
     fuerteContra = ["Acero","Electrico","Roca","Fuego","Veneno"]
@@ -140,7 +142,7 @@ class tipoTierra(Tipo):
     inmune = ["Electrico"]
     movimientos = [["Terratemblor",60,100],["Terremoto",95,85]]
 
-class tipoVeneno(Tipo):
+class tipoVeneno(tipo):
     nombre = "Veneno"
     idTipo = 14
     fuerteContra = ["Planta","Hada"]
@@ -148,7 +150,7 @@ class tipoVeneno(Tipo):
     debilContra = ["Tierra","Psiquico"]
     movimientos = [["Lanza Mugre",60,100],["Cola Veneno",95,85]]
 
-class tipoLucha(Tipo):
+class tipoLucha(tipo):
     nombre = "Lucha"
     idTipo = 15
     fuerteContra = ["Acero","Hielo","Normal","Roca","Siniestro"]
@@ -156,7 +158,7 @@ class tipoLucha(Tipo):
     debilContra = ["Volador","Hada","Psiquico"]
     movimientos = [["Puntapie",60,100],["Patada S.Alta",95,85]]
 
-class tipoHielo(Tipo):
+class tipoHielo(tipo):
     nombre = "Hielo"
     idTipo = 16
     fuerteContra = ["Volador","Planta","Tierra","Dragon"]
@@ -164,7 +166,7 @@ class tipoHielo(Tipo):
     debilContra = ["Fuego","Acero","Roca","Lucha"]
     movimientos = [["Rayo Hielo",60,100],["Frio Polar",95,85]]
 
-class tipoElectrico(Tipo):
+class tipoElectrico(tipo):
     nombre = "Electrico"
     idTipo = 17
     fuerteContra = ["Volador","Agua"]
@@ -172,7 +174,7 @@ class tipoElectrico(Tipo):
     debilContra = ["Tierra"]
     movimientos = [["Rayo",60,100],["Trueno",95,85]]
 
-class tipoNormal(Tipo):
+class tipoNormal(tipo):
     nombre = "Normal"
     idTipo = 18
     fuerteContra = []
@@ -181,5 +183,8 @@ class tipoNormal(Tipo):
     inmune = ["Fantasma"]
     movimientos = [["Golpe Cuerpo",60,100],["Pisoton",95,85]]
 
-fuego =tipoFuego()
-fuego.informacion()
+
+tiposExistentes = [[1, "Fuego"], [2, "Agua"], [3, "Planta"], [4, "Hada"], [5, "Acero"], [6, "Siniestro"], [7, "Dragon"],
+                   [8, "Fantasma"], [9, "Roca"], [10, "Bicho"], [11, "Psiquico"], [12, "Volador"], [13, "Tierra"],
+                   [14, "Veneno"],
+                   [15, "Lucha"], [16, "Hielo"], [17, "Electrico"], [18, "Normal"]]
